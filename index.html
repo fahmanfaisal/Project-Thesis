@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Sohoj Banking - Online Banking System. Software Project-2, American International University - Bangladesh (AIUB), 2019.">
+<title>Sohoj Banking — Online Banking System</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background-color:#ffffff;color:#1f2328;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";line-height:1.5}
+.markdown-body{max-width:980px;margin:0 auto;padding:32px 24px 64px;font-size:16px;word-wrap:break-word}
+.markdown-body::before{display:none}
+a{color:#0969da;text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3,h4,h5,h6{margin-top:24px;margin-bottom:16px;font-weight:600;line-height:1.25}
+h1{font-size:2em;padding-bottom:.3em;border-bottom:1px solid #d1d9e0}
+h2{font-size:1.5em;padding-bottom:.3em;border-bottom:1px solid #d1d9e0}
+h3{font-size:1.25em}
+h4{font-size:1em}
+h5{font-size:.875em}
+h6{font-size:.85em;color:#59636e}
+h1,h2,h3,h4,h5,h6{scroll-margin-top:16px}
+p{margin-top:0;margin-bottom:16px}
+hr{height:.25em;padding:0;margin:24px 0;background-color:#d1d9e0;border:0}
+blockquote{margin:0 0 16px;padding:0 1em;color:#59636e;border-left:.25em solid #d1d9e0}
+ul,ol{margin-top:0;margin-bottom:16px;padding-left:2em}
+li+li{margin-top:.25em}
+li>p{margin-bottom:16px}
+code{padding:.2em .4em;margin:0;font-size:85%;white-space:break-spaces;background-color:#afb8c133;border-radius:6px;font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace}
+pre{margin-top:0;margin-bottom:16px;word-wrap:normal;padding:16px;overflow:auto;background-color:#f6f8fa;border-radius:6px;font-size:85%;line-height:1.45}
+pre code{padding:0;margin:0;font-size:100%;background:transparent;border:0}
+table{border-spacing:0;border-collapse:collapse;display:block;width:max-content;max-width:100%;overflow:auto;margin-top:0;margin-bottom:16px;font-size:14px}
+table th{font-weight:600;padding:6px 13px;border:1px solid #d1d9e0}
+table td{padding:6px 13px;border:1px solid #d1d9e0}
+table tr{background-color:#fff;border-top:1px solid #d1d9e0}
+table tr:nth-child(2n){background-color:#f6f8fa}
+table th{background-color:#f6f8fa;text-align:left}
+img{max-width:100%;box-sizing:border-box;background-color:#fff;border-style:none;border:1px solid #d1d9e0;border-radius:6px;padding:4px;margin:8px 0;vertical-align:middle}
+.markdown-body img[align="left"]{float:left;margin:0 20px 12px 0;border:none;padding:0;width:80px}
+details{display:block;margin:16px 0;padding:14px 18px;border:1px solid #d1d9e0;border-radius:6px;background-color:#f6f8fa}
+details summary{cursor:pointer;color:#0969da;font-weight:600;list-style:none}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"\25B8\00a0";display:inline-block;transition:transform .15s ease}
+details[open] summary::before{transform:rotate(90deg)}
+details img{display:block}
+br[clear="all"]{clear:both;display:block;content:"";clear:both}
+table.cmd{width:100%}
+@media screen and (max-width:767px){
+  .markdown-body{font-size:14px;padding:20px 14px 48px}
+  table{font-size:13px}
+}
+</style>
+</head>
+<body>
+<main class="markdown-body">
+<img src="docs/images/cover-aiub-logo.jpeg" width="80" alt="AIUB logo" align="left"><h1 id="sohoj-banking--online-banking-system">Sohoj Banking — Online Banking System</h1>
+<p><strong>Software Project-2</strong> · Department of Computer Science, Faculty of Science and Technology
+American International University – Bangladesh (AIUB) · 2019</p>
+<br clear="all"><p><img src="docs/images/fig09-home-page.png" alt="Sohoj Banking home page"></p>
+<hr>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#highlights">Highlights</a></li>
+<li><a href="#user-roles-and-features">User Roles and Features</a></li>
+<li><a href="#how-it-works">How It Works</a></li>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#system-design">System Design</a></li>
+<li><a href="#screenshots">Screenshots</a></li>
+<li><a href="#comparison-with-existing-systems">Comparison with Existing Systems</a></li>
+<li><a href="#development-process">Development Process</a></li>
+<li><a href="#project-economics">Project Economics</a></li>
+<li><a href="#scope-environment-and-challenges">Scope, Environment and Challenges</a></li>
+<li><a href="#outcomes-limitations-and-future-scope">Outcomes, Limitations and Future Scope</a></li>
+<li><a href="#full-report">Full Report</a></li>
+<li><a href="#team-and-supervisors">Team and Supervisors</a></li>
+<li><a href="#references">References</a></li>
+</ol>
+<hr>
+<h2 id="overview">Overview</h2>
+<p>Online banking, also known as internet banking, is an electronic payment system that enables
+customers of a bank or other financial institution to conduct a range of financial transactions
+through the institution&#39;s website. Banking online allows you to transfer money, pay bills, check
+your balance or set up a regular payment — 24/7, from any place with internet access, on a
+computer, tablet or mobile phone.</p>
+<p><strong>Sohoj Banking</strong> is a dynamic, web-based online banking system built to make a customer&#39;s
+transaction experience a little easier: register, get approved by bank staff, then deposit,
+withdraw, transfer funds, request a cheque book or ATM card, and follow every account activity
+online — all from one user-friendly portal.</p>
+<h3 id="motivation">Motivation</h3>
+<ul>
+<li>Going to the bank for any transaction is time consuming.</li>
+<li>Internet banking features are easy to use, private, secured and accessible.</li>
+<li>Society is becoming cashless, and people are very interested in using online banking systems.</li>
+</ul>
+<h3 id="objectives">Objectives</h3>
+<ul>
+<li>Perform transactions online and consume less time.</li>
+<li>A user-friendly system, up to date with the latest services of the bank.</li>
+<li>Make the banking transaction system simple, easy and reliable.</li>
+</ul>
+<h3 id="hypothesis">Hypothesis</h3>
+<ol>
+<li>People are not happy with the existing banking system.</li>
+<li>Advancement of technology demands a cashless society.</li>
+</ol>
+<hr>
+<h2 id="highlights">Highlights</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>User roles</td>
+<td>Admin, Staff, Customer</td>
+</tr>
+<tr>
+<td>Core modules</td>
+<td>Home page (index) · login panel (customer/admin/staff) + sign-up · Admin panel · Customer panel · Staff panel</td>
+</tr>
+<tr>
+<td>Notifications</td>
+<td>Email notification after each successful transaction</td>
+</tr>
+<tr>
+<td>Methodology</td>
+<td>Agile, using the XP (Extreme Programming) process model</td>
+</tr>
+<tr>
+<td>Report figures</td>
+<td>31 (8 UML diagrams + 23 UI screenshots)</td>
+</tr>
+<tr>
+<td>Estimated development cost</td>
+<td>BDT 163,961 (grand total BDT 243,961 including launch and 1-year maintenance)</td>
+</tr>
+<tr>
+<td>ROI plan</td>
+<td>BDT 255,000 over 5 years — investment returns in 5 years</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>All planned features implemented and working; mobile app planned for the future</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="user-roles-and-features">User Roles and Features</h2>
+<p>There are three types of user: <strong>Admin</strong>, <strong>Staff</strong> and <strong>Customer</strong>.
+Existing customers, admins and staff log in with a unique mail ID and password;
+a new customer must register first.</p>
+<h3 id="customer">Customer</h3>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Features</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Profile</td>
+<td>Show profile · update profile · change password · logout</td>
+</tr>
+<tr>
+<td>Money</td>
+<td>Withdraw money · deposit money · transfer money to another account in the same bank or another bank · start a fixed deposit</td>
+</tr>
+<tr>
+<td>Requests</td>
+<td>Apply for credit/debit card · request a cheque book · request an ATM card · add / view / delete beneficiary</td>
+</tr>
+<tr>
+<td>Records</td>
+<td>Account statement · mini account statement</td>
+</tr>
+</tbody></table>
+<h3 id="staff">Staff</h3>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Features</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Approvals</td>
+<td>Approve new registration requests · approve credit/debit card · approve ATM requests · approve cheque book requests · approve beneficiaries</td>
+</tr>
+<tr>
+<td>Information</td>
+<td>Send notifications to customers · see the list of customers who did any transaction through the system</td>
+</tr>
+<tr>
+<td>Account</td>
+<td>Show profile · change password · logout</td>
+</tr>
+</tbody></table>
+<h3 id="admin">Admin</h3>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Features</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Customer management</td>
+<td>Add a new customer (after approval by staff) · search / show the list of all customers · update or delete a customer</td>
+</tr>
+<tr>
+<td>Staff management</td>
+<td>Add staff · edit staff · delete staff</td>
+</tr>
+<tr>
+<td>Control</td>
+<td>Block any account for a particular time period · access customer profiles · post article</td>
+</tr>
+<tr>
+<td>Account</td>
+<td>Show profile · change password · logout</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="how-it-works">How It Works</h2>
+<ol>
+<li><strong>Registration</strong> — a new customer signs up with personal details (name, password, mobile
+number, address, branch, account type, nominee, etc.).</li>
+<li><strong>Staff approval</strong> — staff verifies the request from the request queue and approves the
+new customer.</li>
+<li><strong>Login</strong> — the customer logs in with a unique mail ID and password.</li>
+<li><strong>Banking</strong> — the customer deposits, withdraws, transfers funds, adds beneficiaries and
+requests a cheque book or ATM card; statements and mini statements are available online.</li>
+<li><strong>Approvals</strong> — staff approves customer, ATM, cheque book and beneficiary requests;
+admins add/edit/delete customers and staff and can block profiles.</li>
+<li><strong>Notification</strong> — an email notification is sent after each successful transaction.</li>
+</ol>
+<hr>
+<h2 id="requirements">Requirements</h2>
+<h3 id="functional-customer-requirements">Functional (Customer Requirements)</h3>
+<ul>
+<li>Show profile, update profile, change password, logout.</li>
+<li>Withdraw money, deposit money.</li>
+<li>Transfer money to another bank or within the same bank.</li>
+<li>Start a fixed deposit.</li>
+<li>Apply for a credit/debit card.</li>
+</ul>
+<h3 id="architectural-requirements">Architectural Requirements</h3>
+<table>
+<thead>
+<tr>
+<th>Side</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Server</td>
+<td>OS: Linux / Windows Server · CPU: minimum Intel Xeon or higher · RAM: 4 GB or more · Hard drive: 1024 GB or more</td>
+</tr>
+<tr>
+<td>Client (PC)</td>
+<td>Any OS with web browsing · CPU: minimum Intel Pentium or higher</td>
+</tr>
+<tr>
+<td>Client (Android)</td>
+<td>Any OS with web browsing · CPU: Mali-400MP4 or higher · RAM: 512 MB or more</td>
+</tr>
+</tbody></table>
+<h3 id="performance-requirements">Performance Requirements</h3>
+<p>The system should be less time consuming in its operations; the majority of the work should be
+done internally during the program&#39;s run-time and then set for network access.</p>
+<hr>
+<h2 id="system-design">System Design</h2>
+<h3 id="use-case-diagram">Use Case Diagram</h3>
+<p>Shows the relationship between admin, customer and staff: how an admin approves a customer,
+how staff verify a customer and send transaction notifications, and how a customer deposits,
+withdraws and transfers money.</p>
+<p><img src="docs/images/fig01-use-case-diagram.jpeg" alt="Use Case Diagram for Online Banking"></p>
+<h3 id="activity-diagrams">Activity Diagrams</h3>
+<p><strong>Admin</strong> — approves a customer, can delete a customer, view the customer list, and update,
+delete and block a customer.</p>
+<p><img src="docs/images/fig02-activity-admin.jpeg" alt="Activity Diagram for Admin"></p>
+<p><strong>Customer</strong> — logs in and transacts money, can apply for a debit/credit card, change password,
+update the profile, and deposit, withdraw or transfer money.</p>
+<p><img src="docs/images/fig03-activity-customer.jpeg" alt="Activity Diagram for Customer"></p>
+<p><strong>Staff</strong> — approves new registration and sends transaction notifications to the customer.</p>
+<p><img src="docs/images/fig04-activity-staff.jpeg" alt="Activity Diagram for Staff"></p>
+<h3 id="statechart-diagrams">Statechart Diagrams</h3>
+<p><img src="docs/images/fig05-statechart-admin.png" alt="Statechart Diagram for Admin"></p>
+<p><img src="docs/images/fig06-statechart-customer.png" alt="Statechart Diagram for Customer"></p>
+<p><img src="docs/images/fig07-statechart-staff.png" alt="Statechart Diagram for Staff"></p>
+<h3 id="entity-relationship-diagram">Entity Relationship Diagram</h3>
+<p><img src="docs/images/fig08-er-diagram.jpeg" alt="ER Diagram for Online Banking System"></p>
+<hr>
+<h2 id="screenshots">Screenshots</h2>
+<h3 id="home-page">Home Page</h3>
+<p>The home page of Sohoj Banking with the secure login panel, sign-up link, features list and
+safe-banking information.</p>
+<p><img src="docs/images/fig09-home-page.png" alt="Home page"></p>
+<h3 id="admin-panel">Admin Panel</h3>
+<p>After login, an admin can change their password and add, delete or edit a customer or staff member.</p>
+<p><img src="docs/images/fig10-admin-options.png" alt="Admin options"></p>
+<p>A new customer is added by filling in the name, password, mobile number, address and other
+details, then confirming.</p>
+<p><img src="docs/images/fig11-admin-add-customer.png" alt="Admin adding a customer"></p>
+<p>An admin can also add staff members to the system.</p>
+<p><img src="docs/images/fig12-admin-add-staff.png" alt="Admin adding staff"></p>
+<details>
+<summary>Show the remaining admin screenshots (edit/delete customer, edit/delete staff)</summary><p><img src="docs/images/fig13-admin-edit-customer.png" alt="Admin editing a customer"></p>
+<p><img src="docs/images/fig14-admin-delete-customer.png" alt="Admin deleting a customer"></p>
+<p><img src="docs/images/fig15-admin-edit-staff.png" alt="Admin editing staff"></p>
+<p><img src="docs/images/fig16-admin-delete-staff.png" alt="Admin deleting staff"></p>
+</details><h3 id="customer-panel">Customer Panel</h3>
+<p>After login, a customer sees these options for transactions: account balance, money transfer,
+bill payment and more.</p>
+<p><img src="docs/images/fig17-customer-options.png" alt="Customer options"></p>
+<p>From the account statement a customer can review full account activity online.</p>
+<p><img src="docs/images/fig21-customer-account-statement.png" alt="Customer account statement"></p>
+<p>A customer transfers funds to another account after adding a beneficiary.</p>
+<p><img src="docs/images/fig24-customer-fund-transfer.png" alt="Customer fund transfer"></p>
+<p>A customer can request a new cheque book or ATM card online instead of visiting the bank.</p>
+<p><img src="docs/images/fig20-customer-cheque-atm-request.png" alt="Customer cheque book and ATM request"></p>
+<details>
+<summary>Show the remaining customer screenshots (personal details, password, mini statement, beneficiaries)</summary><p><img src="docs/images/fig18-customer-personal-details.png" alt="Customer personal details"></p>
+<p><img src="docs/images/fig19-customer-change-password.png" alt="Customer password change"></p>
+<p><img src="docs/images/fig22-customer-mini-statement.png" alt="Customer mini account statement"></p>
+<p><img src="docs/images/fig23-customer-add-beneficiary.png" alt="Customer add beneficiary"></p>
+<p><img src="docs/images/fig25-customer-view-delete-beneficiary.png" alt="Customer view or delete beneficiary"></p>
+</details><h3 id="staff-panel">Staff Panel</h3>
+<p>The staff home page shows customer approval requests, ATM approval requests and cheque book
+requests.</p>
+<p><img src="docs/images/fig26-staff-options.png" alt="Staff options"></p>
+<p>A staff member approves a customer from the request queue.</p>
+<p><img src="docs/images/fig28-staff-approve-customer.png" alt="Staff approving a customer"></p>
+<p>Cheque book requests are approved from the same panel.</p>
+<p><img src="docs/images/fig31-staff-approve-chequebook.png" alt="Staff approving a cheque book request"></p>
+<details>
+<summary>Show the remaining staff screenshots (password change, ATM and beneficiary approval)</summary><p><img src="docs/images/fig27-staff-change-password.png" alt="Staff password change"></p>
+<p><img src="docs/images/fig29-staff-approve-atm.png" alt="Staff approving an ATM request"></p>
+<p><img src="docs/images/fig30-staff-approve-beneficiary.png" alt="Staff approving a beneficiary"></p>
+</details><hr>
+<h2 id="comparison-with-existing-systems">Comparison with Existing Systems</h2>
+<p>Nine banking and banking-related systems were studied (Traderoot Technologies, Oracle
+Flexcube, Altamira, IBS, ICS Bank, i-Mall, Kastle, Olympic Bank System, Omni Enterprise).
+The chart below compares 12 features of two representative systems with Sohoj Banking.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Feature</th>
+<th align="center">Oracle Flexcube</th>
+<th align="center">Olympic Bank</th>
+<th align="center">Sohoj Banking</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Payment option through different sorts of cards (credit/master card, etc.)</td>
+<td align="center">✓</td>
+<td align="center">—</td>
+<td align="center">—</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Payment / transaction cancellation</td>
+<td align="center">✓</td>
+<td align="center">—</td>
+<td align="center">—</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Customer details</td>
+<td align="center">✓</td>
+<td align="center">—</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Monitoring operators</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Do transaction online</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">—</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Send money from one account to another account</td>
+<td align="center">✓</td>
+<td align="center">—</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Pay any bills through their banking account</td>
+<td align="center">—</td>
+<td align="center">—</td>
+<td align="center">—</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Refund request</td>
+<td align="center">—</td>
+<td align="center">—</td>
+<td align="center">—</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Customer, admin and staff each have a unique mail ID and password</td>
+<td align="center">✓</td>
+<td align="center">—</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Record of all transactions</td>
+<td align="center">—</td>
+<td align="center">—</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Admin and staff can send notifications for updates or notices</td>
+<td align="center">—</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Customer can change password and modify their profile</td>
+<td align="center">—</td>
+<td align="center">—</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Total</strong></td>
+<td align="center"><strong>7</strong></td>
+<td align="center"><strong>3</strong></td>
+<td align="center"><strong>7</strong></td>
+</tr>
+</tbody></table>
+<h3 id="feature-gaps-we-identified-and-filled">Feature gaps we identified and filled</h3>
+<ul>
+<li><strong>Customer&#39;s own panel</strong> — see all account-related details and transaction history, which
+the existing systems above do not offer.</li>
+<li><strong>Account statement online</strong> — not available in the existing systems.</li>
+<li><strong>Cheque book request online</strong> — in existing systems a customer must go to the bank and
+apply in person.</li>
+</ul>
+<p>No external human resources were required for the study; information about existing banking
+systems was collected from the internet.</p>
+<hr>
+<h2 id="development-process">Development Process</h2>
+<h3 id="methodology">Methodology</h3>
+<p>We used <strong>agile methodology</strong> to develop the system. Agile is an iteration-based software
+development method in which errors can be fixed at any time and work can start and stop
+wherever needed. The <strong>XP (Extreme Programming) process model</strong> was used within the project.</p>
+<h3 id="developed-system-specification">Developed System Specification</h3>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Home page (index)</td>
+<td>Login panel (customer, admin, staff), sign-up</td>
+</tr>
+<tr>
+<td>Admin</td>
+<td>Show profile, add customer/staff, delete customer/staff, change password, profile edit, logout</td>
+</tr>
+<tr>
+<td>Customer</td>
+<td>Show profile, account statement, mini statement, add beneficiary, apply for cheque/ATM, transfer funds, edit profile, change password, logout</td>
+</tr>
+<tr>
+<td>Staff</td>
+<td>Show profile, approve ATM/cheque, approve beneficiary, approve new customer request, change password, logout</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="project-economics">Project Economics</h2>
+<p>Working hours: <strong>8 hours per day</strong>, <strong>22 days per month</strong>. Domain cost is Tk. 1,000/year;
+the hosting package offers unlimited web space, bandwidth, databases, mailboxes and FTP
+accounts with an SSL certificate (Tk. 10,000/year).</p>
+<h3 id="man-hour-cost">Man-hour Cost</h3>
+<table>
+<thead>
+<tr>
+<th>Position</th>
+<th align="right">Monthly salary</th>
+<th align="right">Table / computer / other cost</th>
+<th align="right">Cost per hour</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Project Manager (PM)</td>
+<td align="right">70,000 tk</td>
+<td align="right">3,000 + 5,000 + 2,500</td>
+<td align="right"><strong>457.39 tk</strong></td>
+</tr>
+<tr>
+<td>Business Analyst (BA)</td>
+<td align="right">50,000 tk</td>
+<td align="right">2,000 + 4,000 + 2,500</td>
+<td align="right"><strong>332.39 tk</strong></td>
+</tr>
+<tr>
+<td>Developer (D)</td>
+<td align="right">50,000 tk</td>
+<td align="right">2,000 + 5,000 + 2,500</td>
+<td align="right"><strong>338.07 tk</strong></td>
+</tr>
+<tr>
+<td>Quality Tester (QT)</td>
+<td align="right">50,000 tk</td>
+<td align="right">2,000 + 5,000 + 2,500</td>
+<td align="right"><strong>338.07 tk</strong></td>
+</tr>
+</tbody></table>
+<h3 id="cost-benefit-analysis">Cost Benefit Analysis</h3>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Position</th>
+<th align="right">Man-hours</th>
+<th align="right">Rate/hr</th>
+<th align="right">Total</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Requirement specification and design</td>
+<td>PM</td>
+<td align="right">16</td>
+<td align="right">457.39</td>
+<td align="right">7,318.24</td>
+</tr>
+<tr>
+<td></td>
+<td>BA</td>
+<td align="right">24</td>
+<td align="right">332.39</td>
+<td align="right">7,977.36</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Phase total</strong></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"><strong>15,295.60</strong></td>
+</tr>
+<tr>
+<td>Coding and testing</td>
+<td>PM</td>
+<td align="right">30</td>
+<td align="right">457.39</td>
+<td align="right">13,721.70</td>
+</tr>
+<tr>
+<td></td>
+<td>BA</td>
+<td align="right">50</td>
+<td align="right">332.39</td>
+<td align="right">16,619.50</td>
+</tr>
+<tr>
+<td></td>
+<td>Developer</td>
+<td align="right">200</td>
+<td align="right">338.07</td>
+<td align="right">67,614.00</td>
+</tr>
+<tr>
+<td></td>
+<td>QT</td>
+<td align="right">150</td>
+<td align="right">338.07</td>
+<td align="right">50,710.50</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Phase total</strong></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"><strong>148,665.70</strong></td>
+</tr>
+</tbody></table>
+<p><strong>Estimated grand total cost</strong></p>
+<table>
+<thead>
+<tr>
+<th>Description</th>
+<th align="right">Cost assumption</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Development</td>
+<td align="right">163,961 BDT</td>
+</tr>
+<tr>
+<td>Site launch (hosting)</td>
+<td align="right">30,000 BDT</td>
+</tr>
+<tr>
+<td>Maintenance (1 year)</td>
+<td align="right">50,000 BDT</td>
+</tr>
+<tr>
+<td><strong>Grand total</strong></td>
+<td align="right"><strong>243,961 BDT</strong></td>
+</tr>
+</tbody></table>
+<h3 id="return-of-investment">Return of Investment</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Medium</th>
+<th align="right">Amount</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1st</td>
+<td>Service charge + third party ad</td>
+<td align="right">10,000.00 Tk</td>
+</tr>
+<tr>
+<td>2nd</td>
+<td>Service charge + third party ad + merchant commission</td>
+<td align="right">25,000.00 Tk</td>
+</tr>
+<tr>
+<td>3rd</td>
+<td>Service charge + third party ad + merchant commission</td>
+<td align="right">45,000.00 Tk</td>
+</tr>
+<tr>
+<td>4th</td>
+<td>Service charge + third party ad + merchant commission</td>
+<td align="right">75,000.00 Tk</td>
+</tr>
+<tr>
+<td>5th</td>
+<td>Service charge + third party ad + merchant commission</td>
+<td align="right">1,00,000.00 Tk</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Total after 5 years</strong></td>
+<td align="right"><strong>2,55,000.00 Tk</strong></td>
+</tr>
+</tbody></table>
+<p>It will take <strong>5 years</strong> to return the investment.</p>
+<hr>
+<h2 id="scope-environment-and-challenges">Scope, Environment and Challenges</h2>
+<p><strong>Scope</strong> — The project is designed to run on desktop as well as mobile; users save time by
+doing online banking from home.</p>
+<p><strong>Environment</strong> — The website must work on Android and iOS and be accessible from any web
+browser: Google Chrome, Mozilla Firefox and Internet Explorer.</p>
+<p><strong>Challenges</strong></p>
+<ol>
+<li>The most impactful barrier of online banking is security.</li>
+<li>The next challenge is the customer&#39;s privacy.</li>
+<li>Broadband speed is another barrier.</li>
+<li>Sophisticated IT infrastructure is required.</li>
+<li>Lack of IT knowledge among users.</li>
+<li>Requires a mobile phone or computer to use.</li>
+<li>Customer satisfaction.</li>
+</ol>
+<hr>
+<h2 id="outcomes-limitations-and-future-scope">Outcomes, Limitations and Future Scope</h2>
+<p><strong>Discussion on outcome</strong> — Almost all the features we intended to implement are working
+perfectly. An initial plan for a mobile application could not be completed; we plan to develop
+an Android and iOS application in the near future.</p>
+<p><strong>Performance</strong> — In testing, the system fulfilled its performance requirements.</p>
+<p><strong>Findings (limitations)</strong></p>
+<ul>
+<li>The security of the system is still very vulnerable.</li>
+<li>No OTP system was added for each transaction.</li>
+<li>Email notification is used for successful transactions; SMS notification would be more useful.</li>
+</ul>
+<p><strong>Future aspects</strong></p>
+<ul>
+<li>Make the system more user friendly and collect appropriate requirements.</li>
+<li>Make services faster, with faster processing and updates.</li>
+<li>Allow transactions from any place.</li>
+<li>Make the system more reliable and secure than the current one.</li>
+<li>Include more functions, widgets and a more attractive, interactive interface.</li>
+</ul>
+<p><strong>Conclusion</strong> — &quot;Sohoj Banking&quot; is an online-based banking system that provides banking
+services online. It is user friendly, secure and accurate, and much more efficient than a
+manual banking transaction system.</p>
+<hr>
+<h2 id="full-report">Full Report</h2>
+<p>The complete software project report — including declaration, approval, acknowledgement,
+requirement analysis, cost benefit analysis, all diagrams, all screenshots and references —
+is available in this repository:</p>
+<p><strong><a href="Sohoj%20Banking%28SP2%29.docx">Sohoj Banking(SP2).docx</a></strong> (Microsoft Word, ~9 MB)</p>
+<p>All 31 figures were extracted from the report into <a href="docs/images/"><code>docs/images/</code></a> for reuse.</p>
+<hr>
+<h2 id="team-and-supervisors">Team and Supervisors</h2>
+<p><strong>Submitted by</strong></p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>15-30923-3</td>
+<td>Sandhi, Shihab Rizwan</td>
+</tr>
+<tr>
+<td>15-30854-3</td>
+<td>Parves, Rubel</td>
+</tr>
+<tr>
+<td>16-31557-1</td>
+<td>Saha, Saikat Chandra</td>
+</tr>
+<tr>
+<td>16-31429-1</td>
+<td>Chowdhury, Md Faisal</td>
+</tr>
+</tbody></table>
+<p><strong>Board of examiners and supervisors</strong></p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Supervisor (Assistant Professor)</td>
+<td>Md. Ezazul Islam</td>
+</tr>
+<tr>
+<td>External (Assistant Professor)</td>
+<td>Sabbir Ahmed</td>
+</tr>
+<tr>
+<td>Head, UG Program</td>
+<td>Dr. M. M. Mahbubul Syeed</td>
+</tr>
+<tr>
+<td>Dean, Faculty of Science and Information Technology</td>
+<td>Prof. Dr. Tafazzal Hossain</td>
+</tr>
+<tr>
+<td>Vice Chancellor</td>
+<td>Dr. Carmen Z. Lamagna</td>
+</tr>
+</tbody></table>
+<p>Submitted on 27 August 2019 and accepted on 28 September 2019 in partial fulfillment of the
+requirements for the degree of Bachelor of Science in Computer Science and Software
+Engineering, American International University – Bangladesh.</p>
+<hr>
+<h2 id="references">References</h2>
+<ol>
+<li><a href="https://www.globalbrandsmagazine.com/list-of-banking-software/">https://www.globalbrandsmagazine.com/list-of-banking-software/</a></li>
+<li><a href="http://www.icsfs.com/en">http://www.icsfs.com/en</a></li>
+<li><a href="http://www.icsfs.com/en/products/core-banking">http://www.icsfs.com/en/products/core-banking</a></li>
+<li><a href="https://legacy.imal.org/en/page/about-imal">https://legacy.imal.org/en/page/about-imal</a></li>
+<li><a href="http://www.imalpal.com/en/">http://www.imalpal.com/en/</a></li>
+<li><a href="http://security.kastle.com/">http://security.kastle.com/</a></li>
+<li><a href="http://www.omni-enterprise.com/">http://www.omni-enterprise.com/</a></li>
+<li><a href="http://www.infrasofttech.com/banking-products">http://www.infrasofttech.com/banking-products</a></li>
+<li><a href="http://www.oracle.com/us/industries/financial-services/046059.pdf">http://www.oracle.com/us/industries/financial-services/046059.pdf</a></li>
+<li><a href="http://bankingsoftwareinfo.blogspot.com/">http://bankingsoftwareinfo.blogspot.com/</a></li>
+<li>IEEE Software Engineering Standards Committee, &quot;IEEE Std 830-1998, IEEE Recommended
+Practice for Software Requirements Specifications&quot;, October 20, 1998</li>
+<li><a href="https://www.roberthalf.com/blog/salaries-and-skills/6-basic-sdlc-methodologies-which-one-is-best">https://www.roberthalf.com/blog/salaries-and-skills/6-basic-sdlc-methodologies-which-one-is-best</a></li>
+</ol>
+
+</main>
+</body>
+</html>
